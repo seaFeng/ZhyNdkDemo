@@ -1,0 +1,3 @@
+rootProject.name = "ZhyNdkDemo"
+include ':app'
+include ':mylibraryOne'
