@@ -1,5 +1,7 @@
 package com.dahai.mylibraryone;
 
+import android.util.Log;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -12,6 +14,21 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+        int value = gPower(3);
+        System.out.println("value == " + value);
+    }
+
+    int gPower(int n) {
+        if (n == 0) {
+            return 1;
+        }
+
+        int value = gPower(n - 1);
+        System.out.println("n == " + n + ";  value == " + value);
+        //if (n != 0) {
+            value *= 2;
+        //}
+        // System.out.println("n == " + n + ";  value == " + value);
+        return value;
     }
 }
