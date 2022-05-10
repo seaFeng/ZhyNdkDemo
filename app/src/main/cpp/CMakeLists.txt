@@ -14,6 +14,10 @@ add_library(lib_gmath STATIC IMPORTED)
 set_target_properties(lib_gmath PROPERTIES IMPORTED_LOCATION
         ${distribution_DIR}/gmath/lib/${ANDROID_ABI}/libgmath.a)
 
+add_library(lib_gperf SHARED IMPORTED)
+set_target_properties(lib_gperf PROPERTIES IMPORTED_LOCATION
+        ${distribution_DIR}/gperf/lib/${ANDROID_ABI}/libgperf.so)
+
 
 # Creates and names a library, sets it as either STATIC
 # or SHARED, and provides the relative paths to its source code.
@@ -54,6 +58,7 @@ target_include_directories(native-lib PRIVATE
 target_link_libraries( # Specifies the target library.
                        native-lib
                        lib_gmath
+                       lib_gperf
                        # Links the target library to the log library
                        # included in the NDK.
                        ${log-lib} )

@@ -19,7 +19,7 @@ android {
             cmake {
                 // explicitly build libs
                 cppFlags ''
-                targets 'gmath'
+                targets 'gmath', 'gperf'
             }
         }
     }
