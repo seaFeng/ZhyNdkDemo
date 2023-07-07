@@ -119,7 +119,36 @@ Java_com_dahai_zhyndkdemo_MainActivity_stringFromJNI(
 
     std::string hello = "Hello from C++";
     LOGE("%s", hello.data());
+    jint jniVersion = env->GetVersion();
+    LOGE("%s%d", "version=",jniVersion);
     __android_log_print(ANDROID_LOG_ERROR, kTAG, "%s", hello.c_str());
+
+    /* 查找Java类 */
+    jclass myClass = env->FindClass("com/dahai/zhyndkdemo/MyClass");
+    if(myClass == NULL) {
+        printf("找不到Java类\n");
+    }
+
+    /* 创建Java对象并调用方法 */
+    jmethodID myMethod = env->GetMethodID(myClass, "sayHello", "()V");
+    jobject myObject = env->AllocObject(myClass);
+    env->CallVoidMethod(myObject, myMethod);
+
+
+    /* 获取Java类的超类 */
+    jclass superClass = env->GetSuperclass(myClass);
+
+    if(superClass == nullptr) {
+        printf("Java类没有超类\n");
+    }
+
+
+    /* 获取Java对象的类 */
+    jclass myObjectClass = env->GetObjectClass(myObject);
+    if(myObjectClass == nullptr) {
+        printf("无法获取Java对象的类\n");
+    }
+
     return env->NewStringUTF("Hello from JNI !  Compiled with ABI " ABI ".");
 }
 

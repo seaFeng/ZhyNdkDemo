@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -39,18 +39,20 @@ public class MainActivity extends AppCompatActivity {
         binding.sampleText.setText(stringFromJNI());
 
         binding.sampleText2.setText(getStringFromJNI2());
+
+        
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        startTicks();
+        //startTicks();
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        stopTicks();
+        //stopTicks();
     }
 
     /*
